@@ -1,0 +1,28 @@
+<policies>
+    <inbound>
+        <base />
+        <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized" require-expiration-time="true" require-scheme="Bearer" require-signed-tokens="true">
+            <openid-config url="https://login.microsoftonline.com/acfb9acd-9870-4ada-9d5b-1d4a4fe447fa/.well-known/openid-configuration" />
+            <required-claims>
+                <claim name="aud" match="all">
+                    <value>https://contoso.com/retail</value>
+                </claim>
+                <claim name="roles" match="all">
+                    <value>returns.write</value>
+                </claim>
+            </required-claims>
+        </validate-jwt>
+        <!-- Send dummy response -->
+        <rewrite-uri template="/FunctionAppMI" />
+        <authentication-managed-identity resource="https://contoso.com/policyadmin" />
+    </inbound>
+    <backend>
+        <base />
+    </backend>
+    <outbound>
+        <base />
+    </outbound>
+    <on-error>
+        <base />
+    </on-error>
+</policies>
