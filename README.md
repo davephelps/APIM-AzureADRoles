@@ -5,7 +5,7 @@ Scripts to:
 2) Create Azure App Registration representing a client
 3) Grant access for the client to roles on the service
 
-To fetch a token, issue an HTTP poST in the following format (from https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)
+To fetch a token, issue an HTTP POST in the following format (from https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)
 
 POST https://login.microsoftonline.com/your tenant/oauth2/v2.0/token           //Line breaks for clarity
 Content-Type: application/x-www-form-urlencoded
